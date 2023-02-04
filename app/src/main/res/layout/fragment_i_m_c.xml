@@ -198,6 +198,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/result" />
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintTop_toBottomOf="@+id/imc"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-5573755080567011/7019194137">
+        </com.google.android.gms.ads.AdView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -8,7 +8,7 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import java.text.NumberFormat
+import com.google.android.gms.ads.AdRequest
 import com.lucasesteves.calculoimcanimation.databinding.FragmentIMCBinding
 
 
@@ -25,8 +25,15 @@ class IMCFragment : Fragment() {
         return binding?.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding?.adView?.resume()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loadNativeAds()
 
         binding?.button?.setOnClickListener {
             if (binding?.altura?.text.toString() == "0" || binding?.peso?.text.toString() == "0"
@@ -94,7 +101,13 @@ class IMCFragment : Fragment() {
         }
     }
 
+    private fun loadNativeAds() = binding?.apply {
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+    }
+
     override fun onDestroyView() {
+        binding?.adView?.destroy()
         super.onDestroyView()
         binding = null
     }
